@@ -1,0 +1,56 @@
+{
+  "name": "kindle-jailbreak-helper",
+  "productName": "Kindle Jailbreak Helper",
+  "version": "0.5.0",
+  "description": "Unofficial desktop companion for the kindlemodding.org jailbreak guide",
+  "author": "mavingaw",
+  "license": "MIT",
+  "homepage": "https://github.com/mavingaw/kindle-jailbreak-helper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mavingaw/kindle-jailbreak-helper.git"
+  },
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "build:ui": "vite build",
+    "start": "vite build && electron .",
+    "dev": "vite build --watch",
+    "dist": "vite build && electron-builder --win"
+  },
+  "build": {
+    "appId": "io.github.mavingaw.kindlejailbreakhelper",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "data/**",
+      "dist/index.html",
+      "dist/assets/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tar": "^7.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^38.8.6",
+    "electron-builder": "^26.15.3",
+    "vite": "^8.3.5"
+  }
+}
